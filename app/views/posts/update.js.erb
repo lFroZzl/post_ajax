@@ -1,0 +1,9 @@
+// recargar el listado
+    // borrar
+    $("#postList").html("")
+    // cargar
+    $("#postList").html("<%= j render @posts %>");
+
+// ocultar modal
+$("#updateModalPost_<%= @post.id %>").modal('hide');
+$(".modal-backdrop").hide()

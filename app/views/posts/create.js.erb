@@ -1,0 +1,9 @@
+// actualizar la lista
+$("#postList").prepend('<%= j render @post %>')
+
+// limpiar el formulario
+$("#post_title").val('');
+$("#post_content").val('');
+
+// cerrar el modal
+$("#newPostModal").modal('hide');

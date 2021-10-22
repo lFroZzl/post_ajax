@@ -1,0 +1,39 @@
+<div class="card col-4" id="boxPost<%= post.id %>">
+    <div class="card-body">
+        <h5 class="card-title"><%= post.title %></h5>
+        <h6 class="card-subtitle text-muted"><%= post.updated_at %></h6>
+        <p><%= post.content %></p>
+        <button type="button" class="btn btn-sm btn-info btn-edit" data-toggle="modal" data-target="#updateModalPost_<%= post.id %>">
+            Edit
+        </button>
+        <%= link_to 'Delete', post, method: :delete, class: 'btn btn-sm btn-danger text-white', remote: true %>
+    </div>
+</div>
+
+<%= form_for(post, :method => :put, remote: true) do  |f| %>
+<div class="modal fade" id="updateModalPost_<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-white">
+        <h5 class="modal-title">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_area :title, class: "form-control" %>
+        <div class="form-group">
+          <%= f.label :content %>
+          <%= f.text_area :content, class: "form-control" %>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Update", class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
